@@ -1,6 +1,4 @@
-﻿using Chinook.DAL.Artist;
-using Chinook.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace Chinook.DAL.Artist
 {
@@ -9,6 +7,10 @@ namespace Chinook.DAL.Artist
         #region Construction
         private readonly ILogger<ArtistDAL> _logger;
         private readonly ChinookContext _context;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ArtistDAL"/> class.
+        /// </summary>
         public ArtistDAL(ILogger<ArtistDAL> logger, ChinookContext context)
         {
             _logger = logger;
@@ -17,6 +19,16 @@ namespace Chinook.DAL.Artist
         #endregion
 
         #region PublicMethodes
+
+        /// <summary>
+        /// This method is to get artist from artist Id
+        /// </summary>
+        /// <param>
+        /// <c>artistId</c> is for filter artist by Id
+        /// </param>
+        /// <returns>
+        /// Returns artist data if the artist Id is matched
+        /// </returns>
         public async Task<Models.Artist?> GetArtistById(long artistId)
         {
             try
@@ -29,6 +41,16 @@ namespace Chinook.DAL.Artist
                 return null;
             }
         }
+
+        /// <summary>
+        /// This method is to get artist list from matched artist name
+        /// </summary>
+        /// <param>
+        /// <c>artistName</c> is for filter artists by name
+        /// </param>
+        /// <returns>
+        /// Returns artists data list if the artist name matched
+        /// </returns>
         public async Task<List<Models.Artist>> GetArtistsByName(string artistName)
         {
             try
@@ -43,6 +65,13 @@ namespace Chinook.DAL.Artist
                 return null;
             }
         }
+
+        /// <summary>
+        /// This method is to get all available artist list
+        /// </summary>
+        /// <returns>
+        /// Returns all available artists list
+        /// </returns>
         public async Task<List<Models.Artist>> GetAllArtists()
         {
             try
