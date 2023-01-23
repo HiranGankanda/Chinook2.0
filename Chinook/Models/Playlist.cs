@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Chinook.Models
+﻿namespace Chinook.Models
 {
     public partial class Playlist
     {
@@ -14,7 +11,7 @@ namespace Chinook.Models
         public string? Name { get; set; }
 
         public virtual ICollection<Track> Tracks { get; set; }
-        public virtual ICollection<UserPlaylist> UserPlaylists { get; set; }
+        public virtual ICollection<UserPlaylist>? UserPlaylists { get; set; }
 
     }
 }
